@@ -12,6 +12,9 @@
 		CE5301A11F6D3DAF00E0CDF5 /* IndoorwayTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5301A01F6D3DAF00E0CDF5 /* IndoorwayTaskTests.swift */; };
 		CE5301B21F6D543600E0CDF5 /* Photos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5301B11F6D543600E0CDF5 /* Photos.storyboard */; };
 		CE5301B41F6D545100E0CDF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5301B31F6D545100E0CDF5 /* LaunchScreen.storyboard */; };
+		CE5301B81F6D593B00E0CDF5 /* TypicodePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5301B71F6D593B00E0CDF5 /* TypicodePhoto.swift */; };
+		CE5301BA1F6D598F00E0CDF5 /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5301B91F6D598F00E0CDF5 /* ApiResource.swift */; };
+		CE5301BC1F6D59D000E0CDF5 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5301BB1F6D59D000E0CDF5 /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		CE5301A21F6D3DAF00E0CDF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5301B11F6D543600E0CDF5 /* Photos.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Photos.storyboard; sourceTree = "<group>"; };
 		CE5301B31F6D545100E0CDF5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE5301B71F6D593B00E0CDF5 /* TypicodePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypicodePhoto.swift; sourceTree = "<group>"; };
+		CE5301B91F6D598F00E0CDF5 /* ApiResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
+		CE5301BB1F6D59D000E0CDF5 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 		CE5301AD1F6D52F000E0CDF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE5301B71F6D593B00E0CDF5 /* TypicodePhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +128,8 @@
 		CE5301AE1F6D530300E0CDF5 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				CE5301B91F6D598F00E0CDF5 /* ApiResource.swift */,
+				CE5301BB1F6D59D000E0CDF5 /* NetworkRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -247,6 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE53018C1F6D3DAF00E0CDF5 /* AppDelegate.swift in Sources */,
+				CE5301B81F6D593B00E0CDF5 /* TypicodePhoto.swift in Sources */,
+				CE5301BC1F6D59D000E0CDF5 /* NetworkRequest.swift in Sources */,
+				CE5301BA1F6D598F00E0CDF5 /* ApiResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
