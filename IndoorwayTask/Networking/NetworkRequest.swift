@@ -19,13 +19,16 @@ extension NetworkRequest {
     fileprivate func load(_ url: URL, withCompletion completion: @escaping (Model?) -> Void) {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url) { [weak self] (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
             guard let data = data else {
                 completion(nil)
                 return
             }
-            print("netowrk request completion")
-            completion(self?.decode(data))
+            completion(self.decode(data))
         }
         task.resume()
     }

@@ -43,8 +43,14 @@ struct PhotoResource: ApiResource {
         return TypicodePhoto(json: jsonDict)
     }
     
-    var endpointPath = "/photo"
-    var baseURL = "https://jsonplaceholder.typicode.com"
+    init(index: Int, baseURL: String = "https://jsonplaceholder.typicode.com", endpointPath: String = "photos") {
+        self.baseURL = baseURL
+        self.endpointPath = endpointPath
+        self.index = index
+    }
+
+    var endpointPath: String
+    var baseURL: String
     var index: Int?
     typealias Model = TypicodePhoto
 }
