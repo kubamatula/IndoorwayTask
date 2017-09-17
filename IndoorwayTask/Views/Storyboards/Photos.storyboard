@@ -6,11 +6,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Typicode Photos-->
+        <!--Zdjęcia Typicode-->
         <scene sceneID="lJG-Xh-MKa">
             <objects>
                 <viewController id="ViL-GR-xso" customClass="PhotoCollectionViewController" customModule="IndoorwayTask" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,14 +28,14 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2X-Dn-BOl">
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
-                                        <state key="normal" title="Czysc"/>
+                                        <state key="normal" title="Wyczyść listę"/>
                                         <connections>
                                             <action selector="resetCollection:" destination="ViL-GR-xso" eventType="touchUpInside" id="YQQ-dK-oTg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTd-An-8V0">
                                         <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
-                                        <state key="normal" title="Dodaj"/>
+                                        <state key="normal" title="Dodaj element"/>
                                         <connections>
                                             <action selector="addNextPhoto:" destination="ViL-GR-xso" eventType="touchUpInside" id="nWh-o4-9l2"/>
                                         </connections>
@@ -44,32 +45,54 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Wa-xV-eV3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="545"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="hn1-go-3ds" customClass="UICollectionViewHorizontallySeperatedLayout" customModule="IndoorwayTask" customModuleProvider="target"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3w8-D5-MV6">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThumbnailCell" id="jJW-Z3-l2U" customClass="PhotoThumbnailCollectionViewCell" customModule="IndoorwayTask" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                        <rect key="frame" x="10.5" y="0.0" width="354" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="354" height="156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qnU-ta-6Hx">
-                                                    <rect key="frame" x="118" y="0.0" width="81" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnU-ta-6Hx">
+                                                    <rect key="frame" x="204" y="13" width="130" height="130"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="130" id="M3u-F2-7aI"/>
+                                                        <constraint firstAttribute="width" secondItem="qnU-ta-6Hx" secondAttribute="height" id="wS8-1L-Ez6"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-Rg-0R2">
-                                                    <rect key="frame" x="8" y="3" width="106" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-Rg-0R2">
+                                                    <rect key="frame" x="8" y="8" width="188" height="140"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Cmh-Nj-6XQ">
+                                                    <rect key="frame" x="258.5" y="68" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
-                                        <size key="customSize" width="199" height="50"/>
+                                        <constraints>
+                                            <constraint firstItem="B9r-Rg-0R2" firstAttribute="bottom" secondItem="jJW-Z3-l2U" secondAttribute="bottomMargin" id="0hU-qD-uFf"/>
+                                            <constraint firstItem="B9r-Rg-0R2" firstAttribute="top" secondItem="jJW-Z3-l2U" secondAttribute="topMargin" id="34L-F6-NhG"/>
+                                            <constraint firstItem="Cmh-Nj-6XQ" firstAttribute="centerX" secondItem="qnU-ta-6Hx" secondAttribute="centerX" id="3Wk-5i-hZ7"/>
+                                            <constraint firstItem="B9r-Rg-0R2" firstAttribute="leading" secondItem="jJW-Z3-l2U" secondAttribute="leadingMargin" id="HMr-4e-Cmf"/>
+                                            <constraint firstItem="B9r-Rg-0R2" firstAttribute="centerY" secondItem="qnU-ta-6Hx" secondAttribute="centerY" id="KfC-RQ-Ezx"/>
+                                            <constraint firstItem="qnU-ta-6Hx" firstAttribute="leading" secondItem="B9r-Rg-0R2" secondAttribute="trailing" constant="8" id="MP0-uM-1KN"/>
+                                            <constraint firstAttribute="trailing" secondItem="qnU-ta-6Hx" secondAttribute="trailing" constant="20" id="UEK-u0-9Je"/>
+                                            <constraint firstItem="qnU-ta-6Hx" firstAttribute="centerY" secondItem="jJW-Z3-l2U" secondAttribute="centerY" id="VvJ-mv-RTC"/>
+                                            <constraint firstItem="Cmh-Nj-6XQ" firstAttribute="centerY" secondItem="qnU-ta-6Hx" secondAttribute="centerY" id="qm6-jm-d8a"/>
+                                        </constraints>
+                                        <size key="customSize" width="354" height="156"/>
                                         <connections>
                                             <outlet property="imageView" destination="qnU-ta-6Hx" id="nMr-Ez-zL3"/>
+                                            <outlet property="spinner" destination="Cmh-Nj-6XQ" id="Ph2-EQ-LWP"/>
                                             <outlet property="titleLabel" destination="B9r-Rg-0R2" id="vN7-an-J1m"/>
                                         </connections>
                                     </collectionViewCell>
@@ -87,7 +110,7 @@
                             <constraint firstItem="HCA-PV-CSS" firstAttribute="top" secondItem="PjG-qR-Ezu" secondAttribute="bottom" constant="20" id="r4Y-ju-5EU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Typicode Photos" id="ch2-wG-C66"/>
+                    <navigationItem key="navigationItem" title="Zdjęcia Typicode" id="ch2-wG-C66"/>
                     <connections>
                         <outlet property="collectionView" destination="1Wa-xV-eV3" id="Qq5-MV-ND6"/>
                     </connections>

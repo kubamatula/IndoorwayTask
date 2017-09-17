@@ -21,10 +21,8 @@ public struct TypicodePhoto {
         static let title = "title"
         static let url = "url"
         static let thumbnailUrl = "thumbnailUrl"
-        
     }
 }
-
 
 extension TypicodePhoto {
     init?(json: [String: Any]) {

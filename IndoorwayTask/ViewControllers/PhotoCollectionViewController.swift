@@ -8,32 +8,34 @@
 
 import UIKit
 
+private let thumbnailCellId = "ThumbnailCell"
+private let cellHeight: CGFloat = 150
+
 class PhotoCollectionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    fileprivate var photoItems = [TypicodePhoto]()
-    fileprivate let thumbnailCellId = "ThumbnailCell"
-    fileprivate var photoCache: NSCache<NSNumber,UIImage> = NSCache()
+    fileprivate var photoItems = [TypicodePhoto]() {
+        didSet {
+            if photoItems.isEmpty {
+                
+            }
+        }
+    }
     
+    fileprivate var photoCache: NSCache<NSNumber,UIImage> = NSCache()
     private var photoIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        //collectionView.collectionViewLayout = UICollectionViewHorizontallySeperatedLayout()
-        
-        
-        photoItems.append(TypicodePhoto(id: 1, albumId: 2, title: "asd", url: "", thumbnailUrl: ""))
-        photoItems.append(TypicodePhoto(id: 2, albumId: 2, title: "asd 2", url: "", thumbnailUrl: ""))
-        photoItems.append(TypicodePhoto(id: 2, albumId: 2, title: "asd 2", url: "", thumbnailUrl: ""))
+        collectionView.collectionViewLayout = UICollectionViewHorizontallySeperatedLayout()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        photoCache.removeAllObjects()
     }
     
     @IBAction func resetCollection(_ sender: UIButton) {
@@ -47,12 +49,11 @@ class PhotoCollectionViewController: UIViewController {
         let photoResource = PhotoResource(index: photoIndex)
         let photoRequest = ApiRequest(resource: photoResource)
         photoRequest.load() { [weak self] typicodePhoto in
-            if let photoData = typicodePhoto {
-                self?.photoItems.append(photoData)
-                DispatchQueue.main.async {
-                    //self?.collectionView.insertItems(at: [IndexPath(item: self!.photoItems.count - 1, section: 0)])
-                    self?.collectionView.reloadData()
-                }
+            guard let photoData = typicodePhoto else { return }
+            self?.photoItems.append(photoData)
+            DispatchQueue.main.async {
+//                    self?.collectionView.insertItems(at: [IndexPath(item: self!.photoItems.count - 1, section: 0)])
+                self?.collectionView.reloadData()
             }
         }
     }
@@ -60,6 +61,7 @@ class PhotoCollectionViewController: UIViewController {
 }
 
 extension PhotoCollectionViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoItems.count
     }
@@ -69,9 +71,9 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
         let photoItem = photoItems[indexPath.row]
         cell.title = photoItem.title
         if let photo = photoCache.object(forKey: photoItem.id as NSNumber) {
-            print("using cached img")
             cell.photo = photo
         } else {
+            cell.startSpinner()
             guard let imageRequest = ImageRequest(url: photoItem.thumbnailUrl) else { return cell }
             imageRequest.load() { [weak cell, weak self] photo in
                 DispatchQueue.main.async {
@@ -88,7 +90,8 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
 }
 
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 150)
+        return CGSize(width: collectionView.bounds.size.width, height: cellHeight)
     }
 }

@@ -18,6 +18,7 @@
 		CE5301BE1F6D5AFD00E0CDF5 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5301BD1F6D5AFD00E0CDF5 /* PhotoCollectionViewController.swift */; };
 		CEC134C91F6D8C100086D762 /* PhotoThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC134C81F6D8C100086D762 /* PhotoThumbnailCollectionViewCell.swift */; };
 		CEC134CC1F6DCC1A0086D762 /* UICollectionViewHorizontallySeperatedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC134CB1F6DCC1A0086D762 /* UICollectionViewHorizontallySeperatedLayout.swift */; };
+		CEC134CE1F6DE9510086D762 /* HorizontalSeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC134CD1F6DE9510086D762 /* HorizontalSeperatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		CE5301BD1F6D5AFD00E0CDF5 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		CEC134C81F6D8C100086D762 /* PhotoThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEC134CB1F6DCC1A0086D762 /* UICollectionViewHorizontallySeperatedLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewHorizontallySeperatedLayout.swift; sourceTree = "<group>"; };
+		CEC134CD1F6DE9510086D762 /* HorizontalSeperatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSeperatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				CEC134CA1F6DCB8F0086D762 /* Layouts */,
 				CE5301B01F6D537C00E0CDF5 /* Cells */,
 				CE5301AF1F6D535600E0CDF5 /* Storyboards */,
+				CEC134CD1F6DE9510086D762 /* HorizontalSeperatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				CE5301BE1F6D5AFD00E0CDF5 /* PhotoCollectionViewController.swift in Sources */,
 				CE53018C1F6D3DAF00E0CDF5 /* AppDelegate.swift in Sources */,
+				CEC134CE1F6DE9510086D762 /* HorizontalSeperatorView.swift in Sources */,
 				CE5301B81F6D593B00E0CDF5 /* TypicodePhoto.swift in Sources */,
 				CEC134CC1F6DCC1A0086D762 /* UICollectionViewHorizontallySeperatedLayout.swift in Sources */,
 				CE5301BC1F6D59D000E0CDF5 /* NetworkRequest.swift in Sources */,

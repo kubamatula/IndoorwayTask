@@ -10,13 +10,11 @@ import UIKit
 
 class PhotoThumbnailCollectionViewCell: UICollectionViewCell {
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        contentView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//    }
-    
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+    
+    
     
     var title: String? {
         get { return titleLabel.text }
@@ -25,12 +23,23 @@ class PhotoThumbnailCollectionViewCell: UICollectionViewCell {
     
     var photo: UIImage? {
         get { return imageView.image }
-        set { imageView.image = newValue }
+        set {
+            imageView.image = newValue
+            if newValue != nil {
+                spinner.stopAnimating()
+            } else {
+                spinner.startAnimating()
+            }
+        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         title = nil
         photo = nil
+    }
+    
+    func startSpinner(){
+        spinner.startAnimating()
     }
 }
