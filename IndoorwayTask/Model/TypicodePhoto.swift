@@ -22,6 +22,10 @@ public struct TypicodePhoto {
         static let url = "url"
         static let thumbnailUrl = "thumbnailUrl"
     }
+    
+    static func fetchPhoto(withId id: Int){
+        
+    }
 }
 
 extension TypicodePhoto {

@@ -39,6 +39,11 @@ extension ApiResource {
 }
 
 struct PhotoResource: ApiResource {
+    typealias Model = TypicodePhoto
+    var endpointPath: String
+    var baseURL: String
+    var index: Int?
+    
     func createModel(jsonDict: Serialization) -> TypicodePhoto? {
         return TypicodePhoto(json: jsonDict)
     }
@@ -48,9 +53,4 @@ struct PhotoResource: ApiResource {
         self.endpointPath = endpointPath
         self.index = index
     }
-
-    var endpointPath: String
-    var baseURL: String
-    var index: Int?
-    typealias Model = TypicodePhoto
 }

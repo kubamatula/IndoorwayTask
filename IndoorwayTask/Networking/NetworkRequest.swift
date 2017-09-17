@@ -17,9 +17,9 @@ protocol NetworkRequest: class {
 
 extension NetworkRequest {
     fileprivate func load(_ url: URL, withCompletion completion: @escaping (Model?) -> Void) {
-        let configuration = URLSessionConfiguration.default
+        let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        session.dataTask(with: url) { (data, _, error) -> Void in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -29,8 +29,7 @@ extension NetworkRequest {
                 return
             }
             completion(self.decode(data))
-        }
-        task.resume()
+        }.resume()
     }
 }
 

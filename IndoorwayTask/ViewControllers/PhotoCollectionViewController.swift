@@ -14,11 +14,16 @@ private let cellHeight: CGFloat = 150
 class PhotoCollectionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noPhotoItemsLabel: UILabel!
     
     fileprivate var photoItems = [TypicodePhoto]() {
         didSet {
-            if photoItems.isEmpty {
-                
+            DispatchQueue.main.async { [weak self] in
+                if self?.photoItems.isEmpty ?? false {
+                    self?.noPhotoItemsLabel!.isHidden = false
+                } else {
+                    self?.noPhotoItemsLabel!.isHidden = true
+                }
             }
         }
     }
@@ -26,6 +31,7 @@ class PhotoCollectionViewController: UIViewController {
     fileprivate var photoCache: NSCache<NSNumber,UIImage> = NSCache()
     private var photoIndex = 0
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -38,6 +44,7 @@ class PhotoCollectionViewController: UIViewController {
         photoCache.removeAllObjects()
     }
     
+    // MARK: - UIInteraction
     @IBAction func resetCollection(_ sender: UIButton) {
         photoItems.removeAll()
         photoIndex = 0
@@ -52,14 +59,19 @@ class PhotoCollectionViewController: UIViewController {
             guard let photoData = typicodePhoto else { return }
             self?.photoItems.append(photoData)
             DispatchQueue.main.async {
-//                    self?.collectionView.insertItems(at: [IndexPath(item: self!.photoItems.count - 1, section: 0)])
-                self?.collectionView.reloadData()
+                guard let strongSelf = self else { return }
+                strongSelf.collectionView.reloadData()
+                
+                //scrolling to the newly added item
+                let lastItemIndex = strongSelf.photoItems.count - 1
+                strongSelf.collectionView.scrollToItem(at: IndexPath(item: lastItemIndex, section: 0), at: .bottom, animated: true)
             }
         }
     }
     
 }
 
+// MARK: - UICollectionViewDataSource
 extension PhotoCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -89,6 +101,7 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
