@@ -33,9 +33,29 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE53019B1F6D3DAF00E0CDF5"
+               BlueprintIdentifier = "CE4F40421F83D50700197320"
                BuildableName = "IndoorwayTaskTests.xctest"
                BlueprintName = "IndoorwayTaskTests"
+               ReferencedContainer = "container:IndoorwayTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE4F405F1F83D59E00197320"
+               BuildableName = "asd.xctest"
+               BlueprintName = "asd"
+               ReferencedContainer = "container:IndoorwayTask.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE4F406D1F83D5B200197320"
+               BuildableName = "asdasd.xctest"
+               BlueprintName = "asdasd"
                ReferencedContainer = "container:IndoorwayTask.xcodeproj">
             </BuildableReference>
          </TestableReference>

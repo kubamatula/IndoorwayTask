@@ -1,0 +1,16 @@
+ [
+  {
+  "albumId": 1,
+  "id": 1,
+  "title": "asd",
+  "url": "http://placehold.it",
+  "thumbnailUrl": "http://placehold.it"
+  },
+  {
+  "albumId": 1,
+  "id": 2,
+  "title": "asd2",
+  "url": "http://placehold.pl",
+  "thumbnailUrl": "http://placehold.pl"
+  }
+]

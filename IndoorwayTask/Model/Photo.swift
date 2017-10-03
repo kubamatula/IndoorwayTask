@@ -31,3 +31,9 @@ extension Photo {
         return Resource(url: url)
     }
 }
+
+extension Photo: Equatable {
+    static func ==(lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.albumId == rhs.albumId && lhs.id == rhs.id && lhs.title == rhs.title && lhs.url == rhs.url && lhs.thumbnailUrl == rhs.thumbnailUrl
+    }
+}
