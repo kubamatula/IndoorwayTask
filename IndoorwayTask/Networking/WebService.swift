@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 class WebSerivce {
     func load<A>(resource: Resource<A>, completion: @escaping (A?) -> Void) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in

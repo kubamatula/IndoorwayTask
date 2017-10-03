@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W2R-XC-n7o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W2R-XC-n7o">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,7 +56,7 @@
                                         <rect key="frame" x="10.5" y="0.0" width="354" height="156"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="354" height="156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnU-ta-6Hx">
@@ -67,7 +67,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-Rg-0R2">
-                                                    <rect key="frame" x="8" y="8" width="182" height="140"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="156"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -98,32 +98,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brak miniaturek do wyświetlenia" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojm-pb-VJh">
-                                <rect key="frame" x="16" y="300" width="343" height="67.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1Wa-xV-eV3" firstAttribute="leading" secondItem="fIk-vh-OfT" secondAttribute="leading" id="3lc-4r-l1x"/>
-                            <constraint firstItem="ojm-pb-VJh" firstAttribute="centerX" secondItem="fIk-vh-OfT" secondAttribute="centerX" id="KTW-p2-NYX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ojm-pb-VJh" secondAttribute="trailing" id="QFS-6R-NDi"/>
-                            <constraint firstItem="ojm-pb-VJh" firstAttribute="leading" secondItem="fIk-vh-OfT" secondAttribute="leadingMargin" id="QpC-AJ-eqv"/>
                             <constraint firstItem="1Wa-xV-eV3" firstAttribute="top" secondItem="u2h-y0-buk" secondAttribute="bottom" id="Xx9-r7-uaM"/>
                             <constraint firstItem="PjG-qR-Ezu" firstAttribute="top" secondItem="1Wa-xV-eV3" secondAttribute="bottom" constant="8" id="Ycg-KB-orN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PjG-qR-Ezu" secondAttribute="trailing" id="i9i-a5-AID"/>
                             <constraint firstItem="PjG-qR-Ezu" firstAttribute="leading" secondItem="fIk-vh-OfT" secondAttribute="leadingMargin" id="lmB-aZ-rVm"/>
                             <constraint firstAttribute="trailing" secondItem="1Wa-xV-eV3" secondAttribute="trailing" id="r3V-bf-LQL"/>
                             <constraint firstItem="HCA-PV-CSS" firstAttribute="top" secondItem="PjG-qR-Ezu" secondAttribute="bottom" constant="20" id="r4Y-ju-5EU"/>
-                            <constraint firstItem="ojm-pb-VJh" firstAttribute="centerY" secondItem="fIk-vh-OfT" secondAttribute="centerY" id="s1v-Nw-LbA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Zdjęcia Typicode" id="ch2-wG-C66"/>
                     <connections>
-                        <outlet property="collectionView" destination="1Wa-xV-eV3" id="Qq5-MV-ND6"/>
-                        <outlet property="noPhotoItemsLabel" destination="ojm-pb-VJh" id="vB0-Oz-0aD"/>
+                        <outlet property="collectionView" destination="1Wa-xV-eV3" id="Oqi-YF-1l9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnq-PW-QbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +125,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W2R-XC-n7o" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rQx-rb-nsm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
