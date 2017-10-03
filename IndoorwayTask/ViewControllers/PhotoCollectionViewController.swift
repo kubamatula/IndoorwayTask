@@ -9,27 +9,27 @@
 import UIKit
 
 private let thumbnailCellId = "ThumbnailCell"
-private let cellHeight: CGFloat = 150
+private let initialPhotoIndex = 0
 
 class PhotoCollectionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var noPhotoItemsLabel: UILabel!
     
-    fileprivate var photoItems = [TypicodePhoto]() {
+    private let webService = WebSerivce()
+    
+    fileprivate var photoItems = [Photo]() {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                if self?.photoItems.isEmpty ?? false {
-                    self?.noPhotoItemsLabel!.isHidden = false
-                } else {
-                    self?.noPhotoItemsLabel!.isHidden = true
-                }
+            if photoItems.isEmpty {
+                noPhotoItemsLabel.isHidden = false
+            } else {
+                noPhotoItemsLabel.isHidden = true
             }
         }
     }
     
-    fileprivate var photoCache: NSCache<NSNumber,UIImage> = NSCache()
-    private var photoIndex = 0
+    fileprivate var thumbnailCache: NSCache<NSNumber,UIImage> = NSCache()
+    private var photoIndex = initialPhotoIndex
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -38,28 +38,23 @@ class PhotoCollectionViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewHorizontallySeperatedLayout()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        photoCache.removeAllObjects()
-    }
     
     // MARK: - UIInteraction
     @IBAction func resetCollection(_ sender: UIButton) {
         photoItems.removeAll()
-        photoIndex = 0
+        photoIndex = initialPhotoIndex
         collectionView.reloadData()
     }
     
     @IBAction func addNextPhoto(_ sender: UIButton) {
         photoIndex += 1
-        let photoResource = PhotoResource(index: photoIndex)
-        let photoRequest = ApiRequest(resource: photoResource)
-        photoRequest.load() { [weak self] typicodePhoto in
-            guard let photoData = typicodePhoto else { return }
-            self?.photoItems.append(photoData)
+        let photoResource = Photo.resource(id: photoIndex)
+        
+        webService.load(resource: photoResource){ [weak self] photo in
+            guard let photo = photo else { return }
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
+                strongSelf.photoItems.append(photo)
                 strongSelf.collectionView.reloadData()
                 
                 //scrolling to the newly added item
@@ -80,19 +75,18 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: thumbnailCellId, for: indexPath) as! PhotoThumbnailCollectionViewCell
-        let photoItem = photoItems[indexPath.row]
-        cell.title = photoItem.title
-        if let photo = photoCache.object(forKey: photoItem.id as NSNumber) {
+        let photo = photoItems[indexPath.row]
+        cell.title = photo.title
+        if let photo = thumbnailCache.object(forKey: photo.id as NSNumber) {
             cell.photo = photo
         } else {
             cell.startSpinner()
-            guard let imageRequest = ImageRequest(url: photoItem.thumbnailUrl) else { return cell }
-            imageRequest.load() { [weak cell, weak self] photo in
+            webService.load(resource: photo.thumbnail) { [weak cell, weak self] image in
                 DispatchQueue.main.async {
-                    if let photo = photo {
-                        let photoSize = UIImagePNGRepresentation(photo)!.count
-                        self?.photoCache.setObject(photo, forKey: photoItem.id as NSNumber, cost: photoSize)
-                        cell?.photo = photo
+                    if let image = image {
+                        let photoSize = UIImagePNGRepresentation(image)!.count
+                        self?.thumbnailCache.setObject(image, forKey: photo.id as NSNumber, cost: photoSize)
+                        cell?.photo = image
                     }
                 }
             }
@@ -103,8 +97,8 @@ extension PhotoCollectionViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: cellHeight)
+        return CGSize(width: collectionView.bounds.size.width, height: IndoorwayDimensions.thumbnailCellHeight)
     }
 }

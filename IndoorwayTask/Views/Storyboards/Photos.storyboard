@@ -60,21 +60,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnU-ta-6Hx">
-                                                    <rect key="frame" x="204" y="13" width="130" height="130"/>
+                                                    <rect key="frame" x="198" y="0.0" width="156" height="156"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="M3u-F2-7aI"/>
                                                         <constraint firstAttribute="width" secondItem="qnU-ta-6Hx" secondAttribute="height" id="wS8-1L-Ez6"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B9r-Rg-0R2">
-                                                    <rect key="frame" x="8" y="8" width="188" height="140"/>
+                                                    <rect key="frame" x="8" y="8" width="182" height="140"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Cmh-Nj-6XQ">
-                                                    <rect key="frame" x="258.5" y="68" width="20" height="20"/>
+                                                    <rect key="frame" x="266" y="68" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
@@ -85,8 +84,9 @@
                                             <constraint firstItem="B9r-Rg-0R2" firstAttribute="leading" secondItem="jJW-Z3-l2U" secondAttribute="leadingMargin" id="HMr-4e-Cmf"/>
                                             <constraint firstItem="B9r-Rg-0R2" firstAttribute="centerY" secondItem="qnU-ta-6Hx" secondAttribute="centerY" id="KfC-RQ-Ezx"/>
                                             <constraint firstItem="qnU-ta-6Hx" firstAttribute="leading" secondItem="B9r-Rg-0R2" secondAttribute="trailing" constant="8" id="MP0-uM-1KN"/>
-                                            <constraint firstAttribute="trailing" secondItem="qnU-ta-6Hx" secondAttribute="trailing" constant="20" id="UEK-u0-9Je"/>
-                                            <constraint firstItem="qnU-ta-6Hx" firstAttribute="centerY" secondItem="jJW-Z3-l2U" secondAttribute="centerY" id="VvJ-mv-RTC"/>
+                                            <constraint firstAttribute="bottom" secondItem="qnU-ta-6Hx" secondAttribute="bottom" id="QcN-pn-KaI"/>
+                                            <constraint firstAttribute="trailing" secondItem="qnU-ta-6Hx" secondAttribute="trailing" id="UEK-u0-9Je"/>
+                                            <constraint firstItem="qnU-ta-6Hx" firstAttribute="top" secondItem="jJW-Z3-l2U" secondAttribute="top" id="gJb-IN-DXz"/>
                                             <constraint firstItem="Cmh-Nj-6XQ" firstAttribute="centerY" secondItem="qnU-ta-6Hx" secondAttribute="centerY" id="qm6-jm-d8a"/>
                                         </constraints>
                                         <size key="customSize" width="354" height="156"/>

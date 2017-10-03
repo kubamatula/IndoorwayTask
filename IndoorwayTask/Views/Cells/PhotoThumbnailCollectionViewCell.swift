@@ -14,8 +14,6 @@ class PhotoThumbnailCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
-    
-    
     var title: String? {
         get { return titleLabel.text }
         set { titleLabel.text = newValue}

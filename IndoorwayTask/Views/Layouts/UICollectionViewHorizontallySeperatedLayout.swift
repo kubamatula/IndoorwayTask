@@ -5,6 +5,8 @@
 //  Created by Jakub Matuła on 16/09/2017.
 //  Copyright © 2017 Jakub Matuła. All rights reserved.
 //
+//  Layout adding a horizontal line at the top of each collectionViewCell,
+//  but those in the first row
 
 import UIKit
 
@@ -15,7 +17,7 @@ class UICollectionViewHorizontallySeperatedLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
         register(HorizontalSeperatorView.self, forDecorationViewOfKind: separatorDecorationView)
-        minimumLineSpacing = 2
+        minimumLineSpacing = IndoorwayDimensions.seperatorHeight
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,19 +26,19 @@ class UICollectionViewHorizontallySeperatedLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributes = super.layoutAttributesForElements(in: rect) ?? []
-        let lineWidth = self.minimumLineSpacing
+        let seperatorHeight = self.minimumLineSpacing
         
         var decorationAttributes: [UICollectionViewLayoutAttributes] = []
         
         //skipping first cell
-        for layoutAttribute in layoutAttributes where layoutAttribute.indexPath.item > 0 {
+        for layoutAttribute in layoutAttributes where layoutAttribute.indexPath.item >= 1 {
             let separatorAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: separatorDecorationView,
                                                                       with: layoutAttribute.indexPath)
             let cellFrame = layoutAttribute.frame
             separatorAttribute.frame = CGRect(x: cellFrame.origin.x,
-                                              y: cellFrame.origin.y - lineWidth,
+                                              y: cellFrame.origin.y - seperatorHeight,
                                               width: cellFrame.size.width,
-                                              height: lineWidth)
+                                              height: seperatorHeight)
             separatorAttribute.zIndex = Int.max
             decorationAttributes.append(separatorAttribute)
         }
